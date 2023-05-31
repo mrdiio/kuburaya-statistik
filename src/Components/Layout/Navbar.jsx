@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function AppNavbar() {
   return (
     <>
-      <Navbar bg="light" expand="lg" className="shadow bg-body">
+      <Navbar bg="light" expand="lg" className="shadow-sm bg-body">
         <Container className="py-2">
           <Navbar.Brand as={Link} to="/">
             Kubu Raya
