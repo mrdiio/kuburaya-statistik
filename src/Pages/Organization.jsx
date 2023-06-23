@@ -1,19 +1,28 @@
-import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import { getOrganizationService } from '../Services/OrganizationsService';
+import { useQuery } from 'react-query';
 
 export default function Organization() {
   const {
     data: rawData,
     isLoading,
     isSuccess,
-  } = useQuery(['getOrganization'], () => getOrganizationService());
+  } = useQuery(
+    ['getOrganization'],
+    async () => await getOrganizationService(),
+    {
+      staleTime: 1000 * 60 * 60,
+      onSuccess: (data) => {
+        console.log(data);
+      },
+    }
+  );
 
   const [pagination, setPagination] = useState({
     offset: 0,
-    numberPerPage: 10,
+    numberPerPage: 12,
     pageCount: 0,
     currentData: [],
   });
@@ -50,27 +59,32 @@ export default function Organization() {
         </div>
       </div>
 
-      <div className="py-3">
+      <div className="row py-3 g-3">
         {isLoading
           ? 'Loading...'
           : pagination.currentData &&
             pagination.currentData.map((item) => (
-              <div key={item.id} className="card mb-3 rounded-4 ">
-                <div className="d-flex align-item-stretch">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    className="img-fluid rounded-start-4 d-sm-none d-none d-md-block"
-                    alt="..."
-                  />
-                  <div className="col-md-9 col-12">
-                    <div className="card-body">
-                      <div className="d-flex flex-column justify-content-between">
-                        <h3>
-                          {item.id}. {item.title}
-                        </h3>
-                        <p className="text-truncate ">{item.body}</p>
-                      </div>
-                    </div>
+              <div className="col-md-3 col-6" key={item.id}>
+                <div className="card rounded-4 h-100">
+                  <div className="d-flex justify-content-center pt-3">
+                    <img
+                      src="https://satudata.kuburayakab.go.id/uploads/group/2021-11-23-195547.630282logokkr-512.png"
+                      className="img-fluid"
+                      width={140}
+                      alt="..."
+                    />
+                  </div>
+
+                  <div className="card-body">
+                    <h6 className="card-title">{item.title}</h6>
+                  </div>
+                  <div className="card-footer border-0 pb-3 d-flex justify-content-end">
+                    <a
+                      href="#"
+                      className="btn btn-success btn-sm stretched-link"
+                    >
+                      N Datasets
+                    </a>
                   </div>
                 </div>
               </div>
