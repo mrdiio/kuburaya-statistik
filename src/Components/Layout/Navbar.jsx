@@ -17,7 +17,7 @@ export default function AppNavbar() {
                 Home
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/organization">
+              <Nav.Link as={Link} to="/organizations">
                 Organisasi
               </Nav.Link>
 
