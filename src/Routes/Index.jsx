@@ -3,8 +3,8 @@ import About from '../Pages/About';
 import Landing from '../Pages/Landing';
 import AppLayout from '../Components/Layout/AppLayout';
 import Organization from '../Pages/Organizations/Index';
-import { ListDatasetsOrganizations } from '../Pages/Organizations/ListDatasets';
-import { ListDatasetsGroups } from '../Pages/Groups/ListDatasets';
+import { ListDatasetsOrganizations } from '../Pages/Organizations/Detail';
+import { ListDatasetsGroups } from '../Pages/Groups/Detail';
 import DatasetsDetail from '../Pages/Datasets/Detail';
 
 export default function AppRoutes() {

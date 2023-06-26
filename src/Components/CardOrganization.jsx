@@ -10,6 +10,7 @@ export default function CardOrganization({ data }) {
             className="img-fluid"
             width={140}
             alt="..."
+            crossOrigin="anonymous"
           />
         </div>
 
