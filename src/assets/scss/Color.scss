@@ -1,0 +1,18 @@
+// add new color variables
+.bg-cyan-600 {
+  background-color: $cyan-600 !important;
+  color: #fff !important;
+}
+
+// pagination
+.page-item.active .page-link {
+  background-color: $cyan-600 !important;
+  border-color: $cyan-600 !important;
+  color: #fff !important;
+}
+
+.page-item .page-link {
+  color: $cyan-600 !important;
+}
+
+@import 'bootstrap/scss/bootstrap';

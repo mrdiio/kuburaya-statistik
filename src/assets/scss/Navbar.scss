@@ -1,1 +1,12 @@
 @import 'bootstrap/scss/bootstrap';
+
+// nav bar active link
+.navbar-nav .nav-link {
+
+  &.active {
+    font-weight: 600;
+    color: $cyan-600 !important;
+    // border bottom
+    border-bottom: 3px solid $cyan-600;
+  }
+}

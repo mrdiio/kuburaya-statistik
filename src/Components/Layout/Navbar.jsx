@@ -1,5 +1,5 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/images/kuburaya-logo.png';
 
 export default function AppNavbar() {
@@ -13,15 +13,15 @@ export default function AppNavbar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={NavLink} to="/">
                 Home
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/organizations">
+              <Nav.Link as={NavLink} to="/organizations">
                 Organisasi
               </Nav.Link>
 
-              <Nav.Link as={Link} to="about">
+              <Nav.Link as={NavLink} to="about">
                 About
               </Nav.Link>
             </Nav>

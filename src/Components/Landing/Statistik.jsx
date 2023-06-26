@@ -1,18 +1,22 @@
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Statistik() {
   const data = [
     {
       title: 'Datasets',
       value: 100,
+      link: '#datasets',
     },
     {
       title: 'Organisasi',
       value: 100,
+      link: '/organizations',
     },
     {
       title: 'Group',
       value: 100,
+      link: '#groups',
     },
   ];
 
@@ -31,9 +35,15 @@ export default function Statistik() {
                 <h1 className="card-text">{item.value}</h1>
 
                 <div className="d-flex justify-content-end p-2">
-                  <a href="#" className="btn btn-primary btn-sm ">
-                    Lihat Semua
-                  </a>
+                  {item.title === 'Group' ? (
+                    <a href="#groups" className="btn bg-cyan-600 btn-sm">
+                      Lihat
+                    </a>
+                  ) : (
+                    <Link to={item.link} className="btn bg-cyan-600 btn-sm">
+                      Lihat
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>

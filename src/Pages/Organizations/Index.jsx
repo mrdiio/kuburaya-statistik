@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
-import ReactPaginate from 'react-paginate';
 import { getOrganizationService } from '../../Services/OrganizationsService';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
+import Paginate from '../../Components/Paginate';
+import Loading from '../../Components/Loading';
+import CardOrganization from '../../Components/CardOrganization';
 
 export default function Organization() {
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isFetching } = useQuery(
     ['getOrganization', page],
-    async () => await getOrganizationService(page, 10),
+    async () => await getOrganizationService(page, 16),
     {
       keepPreviousData: true,
+      refetchOnWindowFocus: false,
       onSuccess: (data) => {
         setPageCount(Math.ceil(data.count / data.limit));
       },
@@ -30,51 +32,16 @@ export default function Organization() {
       </div>
 
       <div className="row py-3 g-3">
-        {isLoading
-          ? 'Loading...'
-          : data.organizations.map((item) => (
-              <div className="col-md-3 col-6" key={item.id}>
-                <div className="card rounded-4 h-100">
-                  <div className="d-flex justify-content-center pt-3">
-                    <img
-                      src={item.image_url}
-                      className="img-fluid"
-                      width={140}
-                      alt="..."
-                    />
-                  </div>
-
-                  <div className="card-body">
-                    <h6 className="card-title">{item.title}</h6>
-                  </div>
-                  <div className="card-footer border-0 pb-3 d-flex justify-content-end">
-                    <Link
-                      to={`/organizations/${item.name}`}
-                      className="btn btn-success btn-sm stretched-link"
-                    >
-                      {item.total_dataset} Datasets
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+        {isLoading || isFetching ? (
+          <Loading />
+        ) : (
+          data.organizations.map((item) => (
+            <CardOrganization data={item} key={item.id} />
+          ))
+        )}
 
         <div className="d-flex justify-content-end pt-5">
-          <ReactPaginate
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-            breakClassName={'page-item px-3'}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            pageCount={pageCount}
-            marginPagesDisplayed={1}
-            pageRangeDisplayed={3}
-            onPageChange={(e) => setPage(e.selected + 1)}
-          />
+          <Paginate pageCount={pageCount} setPage={setPage} />
         </div>
       </div>
     </Container>

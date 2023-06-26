@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useQuery } from 'react-query';
-import { getDatasetsByOrganizationService } from '../../Services/OrganizationsService';
 import { useParams } from 'react-router-dom';
+import { getDatasetsByGroupService } from '../../Services/GroupService';
 import ListDatasets from '../../Components/ListDatasets';
 import Loading from '../../Components/Loading';
 
-export function ListDatasetsOrganizations() {
+export function ListDatasetsGroups() {
   const { id } = useParams();
 
   const [page, setPage] = useState(1);
 
   const { data, isLoading, isFetching } = useQuery(
-    ['list-datasets-organizations', { id, page }],
+    ['list-datasets-groups', { id, page }],
     async () => {
-      return await getDatasetsByOrganizationService(id, page, 20);
+      return await getDatasetsByGroupService(id, page, 15);
     },
     {
       keepPreviousData: true,
@@ -26,7 +26,7 @@ export function ListDatasetsOrganizations() {
     <Container className="py-5">
       <div className="w-full border-bottom pb-2">
         <div className="d-flex flex-column flex-wrap justify-content-between ">
-          <h2>{data?.datasets[0].organization.title}</h2>
+          <h2>Judul Group</h2>
           <small className="text-body-secondary">
             {data?.count ?? 0} data ditemukan
           </small>

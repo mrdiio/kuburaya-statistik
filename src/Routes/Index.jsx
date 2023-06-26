@@ -4,6 +4,8 @@ import Landing from '../Pages/Landing';
 import AppLayout from '../Components/Layout/AppLayout';
 import Organization from '../Pages/Organizations/Index';
 import { ListDatasetsOrganizations } from '../Pages/Organizations/ListDatasets';
+import { ListDatasetsGroups } from '../Pages/Groups/ListDatasets';
+import DatasetsDetail from '../Pages/Datasets/Detail';
 
 export default function AppRoutes() {
   let router = createBrowserRouter([
@@ -23,6 +25,16 @@ export default function AppRoutes() {
         {
           path: '/organizations/:id',
           element: <ListDatasetsOrganizations />,
+        },
+
+        {
+          path: '/groups/:id',
+          element: <ListDatasetsGroups />,
+        },
+
+        {
+          path: '/datasets/:id',
+          element: <DatasetsDetail />,
         },
 
         {
