@@ -2,8 +2,8 @@ version: '3.8'
 
 services:
   app:
-    container_name: presensiuntants
-    image: mrdiio/presensiuntants
+    container_name: opendata-kuburaya
+    image: mrdiio/opendata-kuburaya
     build:
       context: .
       dockerfile: Dockerfile
