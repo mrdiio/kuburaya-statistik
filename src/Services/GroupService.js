@@ -6,9 +6,9 @@ export const getGroupService = async (page, limit) => {
   return res.data.data;
 };
 
-export const getDatasetsByGroupService = async (id, page, pageSize) => {
+export const getDatasetsByGroupService = async (name, page, pageSize) => {
   const res = await apiClient.get(
-    `/dataset/group/${id}?page=${page}&pageSize=${pageSize}`
+    `/dataset/group/${name}?page=${page}&pageSize=${pageSize}`
   );
   return res.data.data;
 };

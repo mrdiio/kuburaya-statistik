@@ -23,17 +23,17 @@ export default function AppRoutes() {
         },
 
         {
-          path: '/organizations/:id',
+          path: '/organizations/:slug',
           element: <ListDatasetsOrganizations />,
         },
 
         {
-          path: '/groups/:id',
+          path: '/groups/:slug',
           element: <ListDatasetsGroups />,
         },
 
         {
-          path: '/datasets/:id',
+          path: '/datasets/:slug',
           element: <DatasetsDetail />,
         },
 

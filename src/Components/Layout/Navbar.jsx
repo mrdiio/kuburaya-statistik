@@ -1,6 +1,6 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../../assets/images/kuburaya-logo.png';
+import logo from '../../assets/Images/kuburaya-logo.png';
 
 export default function AppNavbar() {
   return (

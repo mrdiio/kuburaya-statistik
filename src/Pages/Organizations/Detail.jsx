@@ -7,14 +7,14 @@ import ListDatasets from '../../Components/ListDatasets';
 import Loading from '../../Components/Loading';
 
 export function ListDatasetsOrganizations() {
-  const { id } = useParams();
+  const { slug } = useParams();
 
   const [page, setPage] = useState(1);
 
   const { data, isLoading, isFetching } = useQuery(
-    ['list-datasets-organizations', { id, page }],
+    ['list-datasets-organizations', { slug, page }],
     async () => {
-      return await getDatasetsByOrganizationService(id, page, 20);
+      return await getDatasetsByOrganizationService(slug, page, 20);
     },
     {
       keepPreviousData: true,
@@ -26,7 +26,7 @@ export function ListDatasetsOrganizations() {
     <Container className="py-5">
       <div className="w-full border-bottom pb-2">
         <div className="d-flex flex-column flex-wrap justify-content-between ">
-          <h2>{data?.datasets[0].organization.title}</h2>
+          <h2>{data?.title}</h2>
           <small className="text-body-secondary">
             {data?.count ?? 0} data ditemukan
           </small>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import kuburayaLogo from '../assets/Images/kuburaya-logo.png';
 
 export default function CardOrganization({ data }) {
   return (
@@ -6,7 +7,8 @@ export default function CardOrganization({ data }) {
       <div className="card rounded-4 h-100">
         <div className="d-flex justify-content-center pt-3">
           <img
-            src={data.image_url}
+            // src={data.image_url}
+            src={kuburayaLogo}
             className="img-fluid"
             width={140}
             alt="..."
